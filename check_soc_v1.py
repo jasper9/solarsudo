@@ -15,15 +15,15 @@ import time
 import paho.mqtt.subscribe as subscribe
 import paho.mqtt.publish as publish
 
-broker = '192.168.1.xxx'
+broker = '192.168.1.117'
 
 soc_low_point = 30
-pv_low_point = 150
+pv_low_point = 100
 
 #now = datetime.datetime.now()
 #print(now.year, now.month, now.day, now.hour, now.minute, now.second)
 def wait_for_settings():
-    secs_to_wait = 60*3
+    secs_to_wait = 60*5
     print(f"Sleeping {secs_to_wait}s to let the settings kick in.")
     time.sleep(secs_to_wait)
 
@@ -83,7 +83,7 @@ def run():
 
 
     elif device_mode == "Bypass" or device_mode == "Solar/Grid":
-            if pv_avg > 150 and soc_topic > (soc_low_point + 10):
+            if pv_avg > pv_low_point and state_of_charge > (soc_low_point + 10):
                 print(f"Since we're running on the grid and solar is available AND soc is 10% over low point, turn on `Solar First` mode.")
                 publish.single("solar_assistant/inverter_1/output_source_priority/set", "Solar first", hostname=broker)
                 
@@ -103,8 +103,8 @@ def run():
 def main():
     while True:
         run()
-        print(f"Sleeping for 1 minute(s)......")
-        time.sleep(60)
+        print(f"Sleeping for 5 minute(s)......")
+        time.sleep(5*60)
 
 if __name__ == '__main__':
     main()

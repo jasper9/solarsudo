@@ -9,7 +9,7 @@ import time
 import paho.mqtt.subscribe as subscribe
 import paho.mqtt.publish as publish
 
-broker = '192.168.1.xxx'
+broker = '192.168.1.117'
 
 def run():
 
