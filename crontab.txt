@@ -31,10 +31,12 @@
 * * * * * /usr/bin/python3 /home/jgray/src/solarsudo/check_soc_v2.py > /dev/null 2>&1
 
 # 2:30pm mountain, 8:30pm UTC / 20:30
+# this is just in case it switched back to grid due to low state of charge
 0 20 * * * /usr/bin/python3 /home/jgray/src/solarsudo/set_mode.py --mode solar > /dev/null 2>&1
 
-# 5:00pm mountain, 11:00pm UTC / 23:00
-0 23 * * * /usr/bin/python3 /home/jgray/src/solarsudo/set_mode.py --mode grid > /dev/null 2>&1
+# 5:30pm mountain, 11:30pm UTC / 23:30
+# force a switch back to grid at 5:30pm.   Maybe make this later?
+30 23 * * * /usr/bin/python3 /home/jgray/src/solarsudo/set_mode.py --mode grid > /dev/null 2>&1
 
 #50 14 * * * /usr/bin/python3 /home/jgray/src/solarsudo/set_mode.py --mode solarTEST > /dev/null 2>&1
 #* 15 * * * /usr/bin/python3 /home/jgray/src/solarsudo/test_cron.py --mode fromCron

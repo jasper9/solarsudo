@@ -29,7 +29,7 @@ pv_low_point = 100
 #                    level=logging.DEBUG)
 #lines = "--------------------------------------------------------------------------------"
 #logging.info(lines)
-logging.info("Running check_soc_v2.py")
+#logging.info("Running check_soc_v2.py")
 
 #logger = logging.getLogger('urbanGUI')
 

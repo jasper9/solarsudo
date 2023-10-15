@@ -7,6 +7,6 @@ logging.basicConfig(filename="/var/log/solarsudo.log",
                     level=logging.DEBUG)
 
 lines = "--------------------------------------------------------------------------------"
-logging.info(lines)
+#logging.info(lines)
 
 
