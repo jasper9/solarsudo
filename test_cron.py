@@ -22,15 +22,10 @@ args = parser.parse_args()
 
 mode = args.mode
 
-if mode == "Solar" or mode == "solar":
-    mode = "Solar first"
-elif mode == "Grid" or mode == "grid":
-    mode = "Utility first"
-else:
-    txt=f"ERROR: `{mode}` is not an option"
-    print(txt)
-    logging.info(txt)
-    quit()
+txt=f"TEST: `{mode}` argument"
+print(txt)
+logging.info(txt)
+quit()
 
 logging.info(f"Attempting to set mode `{mode}`")
 
